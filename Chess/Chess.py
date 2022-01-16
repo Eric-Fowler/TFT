@@ -9,14 +9,25 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import pandas as pd
 import os
+from selenium.webdriver.common.by import By
 
-os.
-
-desired_user = "Bro1a"
-userNameLoc = lo
+from selenium.webdriver.chrome.options import Options
 
 
-webbrowser.open_new('https://www.chess.com/play/online')
+PATH = "D:\Programming\Web Drivers\chromedriver.exe"
 
-#weburl = urllib.request.urlopen('https://www.chess.com/play/online',headers={'User-Agent': 'Mozilla/5.0'})
-#webpage = urlopen(req).read()
+chrome_options = webdriver.ChromeOptions()
+prefs = {"profile.default_content_setting_values.notifications" : 1}
+chrome_options.add_experimental_option("prefs",prefs)
+driver = webdriver.Chrome(PATH,options=chrome_options)
+
+
+driver.get("https://www.chess.com/play/online")
+time.sleep(5)
+searchBtn = driver.find_element(By.LINK_TEXT, "Play")
+
+
+#try:
+#main = WebDriverWait(driver,10).until(EC.presence_of_element_located((By.link)))
+
+#search = driver.find_elements_by_link_text()("Play").click()
